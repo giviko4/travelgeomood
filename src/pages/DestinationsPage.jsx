@@ -1,32 +1,15 @@
+// src/pages/DestinationsPage.jsx (განახლებული)
+
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { destinations } from '../data/destinationsData';
+import DestinationCard from '../components/DestinationCard'; // <-- მთავარი ცვლილება: ვიმპორტებთ ახალ ბარათს
 import './DestinationsPage.css';
 
-const TourCard = ({ tour }) => {
-  const { i18n, t } = useTranslation();
-  const currentLang = i18n.language;
-
-  return (
-    <Link to={`/destination/${tour.id}`} className="tour-card-link">
-      <div className="tour-card">
-        <img src={tour.images[0].src} alt={tour.name[currentLang] || tour.name.en} className="tour-card-img" />
-        <div className="tour-card-body">
-          <h3 className="tour-card-name">{tour.name[currentLang] || tour.name.en}</h3>
-          <p className="tour-card-route">{tour.route ? (tour.route[currentLang] || tour.route.en) : ''}</p>
-          <div className="tour-card-footer">
-            <span className="tour-card-duration">{tour.duration ? (tour.duration[currentLang] || tour.duration.en) : ''}</span>
-            <span className="tour-card-price">{t('price_from')} ${tour.price}</span>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-};
+// ძველი TourCard კომპონენტი აქედან სრულად წაიშალა
 
 function DestinationsPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="destinations-page">
@@ -37,7 +20,16 @@ function DestinationsPage() {
       <div className="container">
         <div className="tours-grid">
           {destinations.map(tour => (
-            <TourCard key={tour.id} tour={tour} />
+            // ვიყენებთ ახალ DestinationCard კომპონენტს
+            <DestinationCard 
+              key={tour.id}
+              id={tour.id}
+              image={tour.images[0].src}
+              name={tour.name[i18n.language] || tour.name.en}
+              price={tour.price}
+              route={tour.route ? (tour.route[i18n.language] || tour.route.en) : ''}
+              routeLabel={tour.routeLabel ? (tour.routeLabel[i18n.language] || tour.routeLabel.en) : ''}
+            />
           ))}
         </div>
       </div>

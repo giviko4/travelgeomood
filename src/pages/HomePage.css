@@ -1,0 +1,98 @@
+/* src/pages/HomePage.css */
+
+/* --- Why Choose Us Section --- */
+.why-us-section {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.why-us-section h2 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.why-us-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.why-us-item {
+  text-align: center;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.why-us-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.why-us-icon {
+  font-size: 40px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.why-us-item h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.why-us-item p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+
+/* --- Testimonials Section --- */
+.testimonials-section {
+  padding: 80px 0;
+  background-color: #f8f9fa; /* ოდნავ განსხვავებული ფონი */
+}
+
+.testimonials-section h2 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  border-top: 5px solid #007bff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-text {
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.testimonial-author {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  text-align: right;
+  margin-top: auto;
+}
+
+

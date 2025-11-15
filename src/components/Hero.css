@@ -1,6 +1,9 @@
+/* src/components/Hero.css (განახლებული მობილურის ღილაკის ფერით) */
+
 .hero {
   position: relative;
   height: 60vh;
+  min-height: 400px;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -10,29 +13,19 @@
   color: white;
 }
 .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
 }
 .hero-content {
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2; padding: 0 20px;
 }
-.hero h1 {
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.hero p {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 30px;
-}
+.hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 10px; }
+.hero p { font-size: 1.5rem; font-weight: 400; margin-bottom: 30px; }
+
+/* --- დესკტოპის საძიებო ველი --- */
 .search-bar {
   display: flex;
+  position: relative;
   background-color: white;
   padding: 10px;
   border-radius: 50px;
@@ -41,48 +34,69 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .search-bar input {
-  flex-grow: 1;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  padding-left: 15px;
+  flex-grow: 1; border: none; outline: none;
+  font-size: 16px; padding-left: 15px; background-color: transparent;
 }
-.search-bar .search-icon {
-  color: #888;
-  font-size: 20px;
-  margin: auto 10px;
+.search-icon-desktop {
+  color: #888; font-size: 20px; margin: auto 10px;
 }
 .search-bar button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: #f0f0f0; color: #555; border: none;
+  padding: 12px 30px; border-radius: 50px; font-size: 16px;
+  font-weight: 500; cursor: pointer; transition: background-color 0.3s ease;
 }
-.search-bar button:hover {
-  background-color: #0056b3;
-}
+.search-bar button:hover { background-color: #e2e2e2; }
+
+/* ტექსტის და ხატულის დამალვა/გამოჩენა */
+.search-button-text { display: inline; }
+.search-button-icon { display: none; }
 
 
-/* Hero.css-ის ბოლოში დაამატე ეს */
+/* --- მობილურის ვერსია --- */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  .hero p {
-    font-size: 1.2rem;
-  }
+  .hero { height: 70vh; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero p { font-size: 1.2rem; }
+
   .search-bar {
-    flex-direction: column;
-    gap: 10px;
-    background: none;
-    box-shadow: none;
+    padding: 0;
+  }
+  .search-icon-desktop {
+    display: none;
   }
   .search-bar input {
-    border-radius: 50px;
-    padding: 15px;
+    padding: 15px 60px 15px 25px;
+    width: 100%;
+  }
+
+  .search-bar button {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* --- მთავარი ცვლილება --- */
+    background: #f0f0f0; /* ღია ნაცრისფერი ფონი */
+    color: #555;        /* მუქი ნაცრისფერი ხატულა */
+    /* -------------------------- */
+    
+    width: 44px;
+    height: 44px;
+    padding: 0;
+  }
+  
+  /* --- მთავარი ცვლილება --- */
+  .search-bar button:hover {
+    background: #e2e2e2; /* ოდნავ მუქი ნაცრისფერი hover-ზე */
+  }
+  /* -------------------------- */
+
+  .search-button-text {
+    display: none;
+  }
+  .search-button-icon {
+    display: block;
+    font-size: 18px;
+    margin: 0 auto;
   }
 }

@@ -1,63 +1,90 @@
-.contact-page-container {
+/* src/pages/ContactPage.css (გაერთიანებული ვერსია) */
+
+.contact-page {
+  padding: 80px 20px; /* დაშორება ზემოდან და ქვემოდან */
+  background-color: #f8f9fa;
+  min-height: 80vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 80px 20px;
-  min-height: 70vh;
+  justify-content: center; /* ვაცენტრებთ ბარათს ჰორიზონტალურად */
 }
+
+/* --- ერთიანი ბარათი --- */
 .contact-card {
   width: 100%;
-  max-width: 600px;
+  max-width: 700px; /* ბარათის მაქსიმალური სიგანე */
   background-color: #fff;
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
-.contact-card h2 {
+
+.contact-header {
+  text-align: center; /* სათაურს ვაბრუნებთ ცენტრში */
+}
+.contact-header h2 {
   font-size: 36px;
   font-weight: 700;
+  margin-bottom: 10px;
+}
+.contact-header p {
+  font-size: 18px;
+  color: #555;
   margin-bottom: 40px;
 }
+
 .contact-info-wrapper {
-  text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px; /* ოდნავ შევამცირეთ დაშორება */
 }
+
 .contact-item {
   display: flex;
   align-items: center;
 }
+
 .contact-icon {
-  font-size: 24px;
+  font-size: 22px;
   color: #007bff;
   margin-right: 20px;
+  width: 30px;
   flex-shrink: 0;
 }
-.contact-text p,
-.contact-text a {
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+}
+.contact-text span {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 2px;
+}
+.contact-text a,
+.contact-text p {
   font-size: 18px;
   color: #333;
   margin: 0;
   line-height: 1.5;
-}
-.contact-text a {
   text-decoration: none;
   transition: color 0.3s ease;
 }
 .contact-text a:hover {
   color: #0056b3;
 }
-.social-icons-wrapper {
+
+/* --- სოციალური ქსელების სექცია --- */
+.contact-socials-section {
   margin-top: 40px;
   padding-top: 30px;
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid #e9ecef; /* გამყოფი ხაზი */
+  text-align: center;
 }
-.social-icons-wrapper h3 {
+.contact-socials-section h3 {
   font-size: 22px;
   font-weight: 600;
-  color: #555;
+  color: #333;
   margin-bottom: 25px;
 }
 .social-links {
@@ -65,7 +92,7 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* მობილურზე გადასატანად */
 }
 .social-icon {
   display: inline-flex;

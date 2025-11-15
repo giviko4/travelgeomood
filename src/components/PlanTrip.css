@@ -1,13 +1,16 @@
+/* src/components/PlanTrip.css (განახლებული) */
+
 .plan-trip {
-  padding: 60px 0;
-  background-color: white;
+  padding: 60px 0 80px 0; /* ქვედა დაშორება გავზარდეთ */
+  background-color: #fff;
 }
 .plan-trip-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: #f8f9fa; /* ფონს ვუცვლით, რომ გამოირჩეოდეს */
   border-radius: 16px;
+  padding: 50px; /* ვამატებთ შიდა დაშორებას */
 }
 .plan-trip h2 {
   font-size: 32px;
@@ -28,7 +31,20 @@
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  
+  /* --- მთავარი ცვლილება: ვაშორებთ ბმულის ხაზგასმას --- */
+  text-decoration: none;
 }
 .get-started-btn:hover {
   background-color: #0056b3;
+}
+
+/* --- ადაპტაცია მობილურისთვის --- */
+@media (max-width: 768px) {
+  .plan-trip-container {
+    flex-direction: column; /* ელემენტები ერთმანეთის ქვეშ ეწყობა */
+    text-align: center;
+    gap: 30px; /* დაშორება ტექსტსა და ღილაკს შორის */
+    padding: 40px 20px;
+  }
 }

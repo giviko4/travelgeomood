@@ -1,6 +1,8 @@
+/* src/components/Header.css (Sign In ღილაკი Search-ის სტილში) */
+
 .header {
   background-color: white;
-  padding: 20px 0;
+  padding: 15px 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
@@ -13,8 +15,8 @@
 }
 .logo {
   font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 0.5px;
+  font-size: 20px;
+  letter-spacing: 0;
   text-decoration: none;
   color: #333;
   flex-shrink: 0;
@@ -28,9 +30,10 @@
 .header-nav ul {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 35px;
 }
 .nav-link {
+  font-size: 16px;
   text-decoration: none;
   color: #555;
   font-weight: 500;
@@ -40,21 +43,32 @@
 }
 .nav-link:hover { color: #007bff; }
 .nav-link.active { color: #007bff; border-bottom-color: #007bff; }
+
 .header-right-side {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   flex-shrink: 0;
 }
+
+/* --- მთავარი ცვლილება --- */
 .sign-in-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
+  background-color: #f0f0f0; /* ღია ნაცრისფერი ფონი */
+  color: #555;             /* მუქი ნაცრისფერი ტექსტი */
+  border: none;             /* ჩარჩოს ვაშორებთ */
+  padding: 10px 20px;       /* ვუბრუნებთ სტანდარტულ padding-ს */
   border-radius: 8px;
   font-size: 16px;
+  font-weight: 500;         /* წონას ვათანაბრებთ Search ღილაკთან */
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.sign-in-btn:hover {
+  background-color: #e2e2e2; /* ოდნავ მუქი ნაცრისფერი hover-ზე */
+}
+/* -------------------------- */
+
 .user-profile {
   display: flex;
   align-items: center;
@@ -88,34 +102,26 @@
   z-index: 1003;
 }
 
-/* --- მთავარი ცვლილება --- */
 @media (max-width: 992px) {
-  /* ვმალავთ მხოლოდ დესკტოპის ნავიგაციას */
   .header-nav {
     display: none;
   }
-  
-  /* ვაჩენთ ბურგერ მენიუს */
   .mobile-menu-icon {
     display: block;
-    order: 3; /* ვაყენებთ ბოლოში */
+    order: 3;
   }
-
   .header-right-side {
-    order: 2; /* მარჯვენა მხარე გადადის ბურგერის წინ */
+    order: 2;
   }
-  
   .logo {
     order: 1;
+    font-size: 18px;
   }
-
   .header-container {
     justify-content: space-between;
   }
-
-  /* --- დამატებული მობილურის მენიუს სტილები --- */
   .header-nav.active {
-    display: flex; /* ვაჩენთ მენიუს */
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -135,78 +141,7 @@
   .header-nav.active .nav-link {
     font-size: 28px;
   }
-
-  /* ვმალავთ დესკტოპის ღილაკებს, რადგან ისინი ისედაც ჩანს */
   .header-right-side .sign-out-btn {
     display: none;
   }
-}
-
-
-
-
-
-
-
-.header {
-  background-color: white;
-  padding: 15px 0; /* შევამცირეთ padding */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-/* --- მთავარი ცვლილება --- */
-.logo {
-  font-weight: 700;
-  font-size: 20px; /* დაპატარავდა */
-  letter-spacing: 0; /* შემცირდა */
-  text-decoration: none;
-  color: #333;
-  flex-shrink: 0;
-  z-index: 1003;
-}
-/* -------------------------- */
-.header-nav {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-}
-.header-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 35px; /* ოდნავ შევამცირეთ */
-}
-.nav-link {
-  font-size: 16px; /* დავაპატარავეთ */
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  padding-bottom: 5px;
-  border-bottom: 2px solid transparent;
-  transition: color 0.3s ease, border-color 0.3s ease;
-}
-.nav-link:hover { color: #007bff; }
-.nav-link.active { color: #007bff; border-bottom-color: #007bff; }
-.header-right-side {
-  display: flex;
-  align-items: center;
-  gap: 15px; /* შევამცირეთ */
-  flex-shrink: 0;
-}
-/* ... (დანარჩენი სტილები უცვლელია) ... */
-
-@media (max-width: 992px) {
-  .header-nav { display: none; }
-  .mobile-menu-icon { display: block; order: 3; }
-  .header-right-side { order: 2; }
-  .logo { order: 1; font-size: 18px; /* კიდევ უფრო ვაპატარავებთ მობილურზე */ }
-  .header-container { justify-content: space-between; }
-  .header-right-side .sign-out-btn { display: none; }
-  /* ... (დანარჩენი მობილურის სტილები უცვლელია) ... */
 }

@@ -1,46 +1,40 @@
-.featured-destinations-full-width {
-  padding: 120px 0 80px 0; 
+/* src/components/FeaturedDestinations.css (განახლებული) */
+
+.featured-destinations-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
 }
-.featured-destinations-full-width h2 {
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
   font-size: 36px;
   font-weight: 700;
-  margin-bottom: 50px;
-  text-align: center;
 }
 
-/* --- დესკტოპის სტილები --- */
-.slider-full-width-container .slick-list {
-  overflow: visible;
-}
-/* --- მთავარი ცვლილება --- */
-.slider-full-width-container .slick-slide {
-  padding: 0 10px; /* დავაბრუნეთ დაშორება */
-  height: 100%;
-}
-.slider-full-width-container .slick-track {
-    display: flex;
-    align-items: stretch; /* ვასწორებთ სიმაღლეში */
-}
-/* -------------------------- */
-
-.slick-prev, .slick-next { /* ... */ }
-.new-tours-section {
-  padding-top: 80px;
-}
-.new-tours-grid {
+.featured-tours-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  
+  /* --- მთავარი ცვლილება: 4-ის ნაცვლად 3 სვეტი --- */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
-@media (max-width: 1200px) {
-  .new-tours-grid {
-    grid-template-columns: repeat(2, 1fr);
+
+/* --- ადაპტაცია --- */
+
+/* პლანშეტები */
+@media (max-width: 992px) {
+  .featured-tours-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 სვეტი */
   }
 }
 
-/* --- მობილურის სტილები --- */
-.mobile-tours-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
+/* მობილურები */
+@media (max-width: 768px) {
+  .featured-tours-grid {
+    grid-template-columns: 1fr; /* 1 სვეტი */
+  }
 }
