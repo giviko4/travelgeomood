@@ -1,0 +1,46 @@
+.featured-destinations-full-width {
+  padding: 120px 0 80px 0; 
+}
+.featured-destinations-full-width h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* --- დესკტოპის სტილები --- */
+.slider-full-width-container .slick-list {
+  overflow: visible;
+}
+/* --- მთავარი ცვლილება --- */
+.slider-full-width-container .slick-slide {
+  padding: 0 10px; /* დავაბრუნეთ დაშორება */
+  height: 100%;
+}
+.slider-full-width-container .slick-track {
+    display: flex;
+    align-items: stretch; /* ვასწორებთ სიმაღლეში */
+}
+/* -------------------------- */
+
+.slick-prev, .slick-next { /* ... */ }
+.new-tours-section {
+  padding-top: 80px;
+}
+.new-tours-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1200px) {
+  .new-tours-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- მობილურის სტილები --- */
+.mobile-tours-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}

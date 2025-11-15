@@ -1,0 +1,22 @@
+.read-more-wrapper p {
+  margin: 0; /* ვაშორებთ p ტეგის დეფოლტ დაშორებას */
+  font-size: 16px;
+  line-height: 1.6;
+  color: #212529;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+.read-more-btn:hover {
+  color: #0056b3;
+}

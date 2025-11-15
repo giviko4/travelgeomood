@@ -1,0 +1,52 @@
+.about-page {
+  color: #333;
+}
+.about-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/khevsureti.jpg') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+.about-hero h1 { font-size: 48px; font-weight: 700; margin-bottom: 15px; }
+.about-hero p { font-size: 20px; max-width: 700px; margin: 0 auto; }
+.about-section { padding: 80px 20px; text-align: center; }
+.about-section h2 { font-size: 36px; margin-bottom: 30px; }
+
+/* --- სტილები "Meet Irakli" სექციისთვის (სურათის გარეშე) --- */
+.about-story {
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  white-space: pre-line; /* ეს რჩება, რომ აბზაცები შეინარჩუნოს */
+}
+/* ----------------------------------------------------------- */
+
+.why-us-background { background-color: #f8f9fa; }
+.why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.why-us-item { text-align: center; padding: 20px; }
+.why-us-icon { font-size: 40px; color: #007bff; margin-bottom: 20px; }
+.why-us-item h3 { font-size: 22px; margin-bottom: 10px; }
+.why-us-item p { font-size: 16px; line-height: 1.6; }
+.reviews-background { background-color: #fff; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.review-card { background: #f8f9fa; padding: 30px; border-radius: 12px; border-top: 5px solid #007bff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.review-text { font-size: 18px; font-style: italic; line-height: 1.7; color: #555; margin-bottom: 20px; }
+.review-author { font-size: 16px; font-weight: 600; color: #333; text-align: right; }
+.cta-section { padding: 80px 20px; margin-top: 60px; background-color: #f8f9fa; border-radius: 16px; margin-bottom: 80px; text-align: center; }
+.cta-buttons { margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.cta-btn { padding: 15px 30px; border-radius: 8px; text-decoration: none; font-size: 18px; font-weight: 600; transition: all 0.3s ease; }
+.cta-btn.primary { background-color: #007bff; color: white; }
+.cta-btn.primary:hover { background-color: #0056b3; }
+.cta-btn.secondary { background-color: transparent; color: #007bff; border: 2px solid #007bff; }
+.cta-btn.secondary:hover { background-color: #007bff; color: white; }
+
+
+
+@media (max-width: 992px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+  /* ... */
+}

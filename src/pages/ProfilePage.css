@@ -1,0 +1,132 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.profile-container {
+  width: 100%;
+  max-width: 1200px;
+}
+.profile-container h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.profile-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+.profile-layout > div {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+.profile-card.unified {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.profile-card.bookings-card {
+  flex: 1.5;
+}
+
+/* ... (დანარჩენი დესკტოპის სტილები უცვლელია) ... */
+.avatar-section { margin-bottom: 20px; }
+.profile-avatar { width: 120px; height: 120px; border-radius: 50%; background-color: #007bff; color: white; font-size: 52px; display: flex; justify-content: center; align-items: center; font-weight: 700; }
+.info-section { width: 100%; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #e9ecef; }
+.info-section p { font-size: 18px; margin: 0 0 15px 0; }
+.info-section strong { color: #555; }
+.info-section .form-group.inline { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
+.info-section label { font-size: 18px; font-weight: 700; color: #555; }
+.info-section input { padding: 10px; font-size: 18px; border: 1px solid #ddd; border-radius: 8px; flex-grow: 1; }
+.edit-buttons { margin-top: 20px; display: flex; justify-content: center; gap: 10px; }
+.edit-profile-btn, .save-btn, .cancel-btn { border: none; padding: 12px 25px; border-radius: 8px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; }
+.edit-profile-btn { background-color: #007bff; color: white; margin-top: 10px; }
+.save-btn { background-color: #28a745; color: white; }
+.cancel-btn { background-color: #6c757d; color: white; }
+
+.password-section { width: 100%; }
+.password-section h3 { margin-bottom: 20px; font-size: 24px; }
+.password-section .form-group { display: flex; flex-direction: column; margin-bottom: 15px; text-align: left; }
+.password-section label { font-weight: 500; margin-bottom: 5px; }
+.password-section input { padding: 12px; font-size: 16px; border: 1px solid #ddd; border-radius: 8px; }
+
+.bookings-card h3 { margin-bottom: 20px; font-size: 24px; text-align: center; }
+.bookings-table-wrapper { overflow-x: auto; } /* ჰორიზონტალური სქროლი რჩება, თუ ტექსტი დიდია */
+.bookings-table { width: 100%; border-collapse: collapse; text-align: left; }
+.bookings-table th, .bookings-table td { padding: 12px 15px; border-bottom: 1px solid #e9ecef; }
+.bookings-table th { background-color: #f8f9fa; font-weight: 600; white-space: nowrap; }
+.status { padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; white-space: nowrap; }
+.status.pending { background-color: #fff3cd; color: #856404; }
+.status.confirmed { background-color: #d4edda; color: #155724; }
+.status.cancelled { background-color: #f8d7da; color: #721c24; }
+.cancel-booking-btn { background-color: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 13px; cursor: pointer; white-space: nowrap; }
+
+.error-message, .success-message { font-size: 14px; margin: 10px 0; }
+.error-message { color: #dc3545; }
+.success-message { color: #28a745; }
+.success-message.main, .error-message.main { padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+.success-message.main { background-color: #d4edda; color: #155724; }
+.error-message.main { background-color: #f8d7da; color: #721c24; }
+
+/* --- მთავარი ცვლილება: მობილურის ვერსია --- */
+@media (max-width: 992px) {
+  .profile-layout {
+    flex-direction: column;
+    align-items: center; /* <<< ვამატებთ ამას, რომ ბარათები გაცენტრდეს */
+  }
+  .profile-layout > div {
+    width: 100%; /* <<< ვამატებთ ამას, რომ ბარათებმა სრული სიგანე დაიკავონ */
+    max-width: 500px; /* <<< ვამატებთ ამას, რომ ძალიან არ გაიწელოს */
+  }
+  .info-section .form-group.inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* ცხრილის მობილურზე მორგება */
+  .bookings-table {
+    display: block;
+    width: 100%;
+  }
+  .bookings-table thead, .bookings-table tbody, .bookings-table th, .bookings-table td, .bookings-table tr {
+    display: block;
+  }
+  .bookings-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .bookings-table tr {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  .bookings-table td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+  .bookings-table td:before {
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+  .bookings-table td:nth-of-type(1):before { content: "Tour Name"; }
+  .bookings-table td:nth-of-type(2):before { content: "Date"; }
+  .bookings-table td:nth-of-type(3):before { content: "Guests"; }
+  .bookings-table td:nth-of-type(4):before { content: "Status"; }
+  .bookings-table td:nth-of-type(5):before { content: "Actions"; }
+}
