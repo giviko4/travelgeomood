@@ -1,28 +1,27 @@
-// src/components/DestinationCard.jsx
+// src/components/DestinationCard.jsx (განახლებული თარგმანით)
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import './DestinationCard.css'; // ამ ფაილის სტილებს სრულად შევცვლით
+import './DestinationCard.css';
 
-function DestinationCard({ image, name, price, id, route, routeLabel }) {
+function DestinationCard({ image, name, price, id, route, isSpecial }) {
   const { t } = useTranslation();
 
   return (
-    // card-link კლასი უზრუნველყოფს, რომ მთელი ბარათი იყოს კლიკვადი
     <Link to={`/destination/${id}`} className="card-link"> 
       <div className="destination-card">
+        {/* --- შეცვლილია ეს ნაწილი --- */}
+        {isSpecial && (
+          <div className="special-tour-badge">{t('special_tour_badge')}</div>
+        )}
+        
         <img src={image} alt={name} className="card-img" />
         
-        {/* ეს არის "overlay" ელემენტი, რომელიც შეიცავს ტექსტს */}
         <div className="card-body-overlay">
           <div className="card-text-content">
             <h3>{name}</h3>
-            {route && routeLabel && (
-              <p className="card-route">
-                {route}
-              </p>
-            )}
+            {route && <p className="card-route">{route}</p>}
           </div>
           <p className="card-price">{t('price_from')} ${price}</p>
         </div>

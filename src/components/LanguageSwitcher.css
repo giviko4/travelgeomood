@@ -1,8 +1,10 @@
+/* src/components/LanguageSwitcher.css (განახლებული) */
+
 .language-switcher .lang-btn {
   background-color: transparent;
-  border: 1px solid #ddd;
+  border: none; /* 2. ბორდერის მოშორება */
   padding: 8px 15px;
-  border-radius: 20px;
+  border-radius: 8px; /* კუთხეების დამრგვალება სხვა ღილაკების სტილში */
   cursor: pointer;
   font-weight: 600;
   color: #555;
@@ -10,5 +12,5 @@
 }
 
 .language-switcher .lang-btn:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Hover ეფექტი რჩება */
 }

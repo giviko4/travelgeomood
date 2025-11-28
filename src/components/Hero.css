@@ -1,28 +1,84 @@
-/* src/components/Hero.css (განახლებული მობილურის ღილაკის ფერით) */
+/* src/components/Hero.css (სრული ვერსია ვიდეო ფონისთვის) */
 
 .hero {
   position: relative;
-  height: 60vh;
-  min-height: 400px;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  height: 85vh; /* ეკრანის სიმაღლის 85% */
+  min-height: 500px;
   color: white;
+  overflow: hidden; /* ეს ხელს უშლის ვიდეოს გადმოსვლას კონტეინერიდან */
 }
-.hero-overlay {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.hero-content {
-  position: relative; z-index: 2; padding: 0 20px;
-}
-.hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 10px; }
-.hero p { font-size: 1.5rem; font-weight: 400; margin-bottom: 30px; }
 
-/* --- დესკტოპის საძიებო ველი --- */
+/* --- ვიდეოს ფონის სტილები --- */
+.hero-video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ეს უზრუნველყოფს, რომ ვიდეომ შეავსოს მთელი სივრცე პროპორციების დარღვევის გარეშე */
+  transform: translate(-50%, -50%);
+  z-index: 1; /* ვიდეო უნდა იყოს კონტენტის უკან */
+  will-change: transform; /* ეხმარება ბრაუზერს ანიმაციის ოპტიმიზაციაში */
+  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Scroll ანიმაცია ახლა ვიდეოზე იმოქმედებს */
+body.scrolled .hero-video-background {
+  transform: translate(-50%, -50%) scale(1.1); /* სქროლვისას ვიდეო ოდნავ დიდდება */
+}
+
+/* --- გამუქების ფენა ვიდეოსა და ტექსტს შორის --- */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* ოდნავ გავამუქოთ, რომ ტექსტი კარგად გამოჩნდეს */
+  z-index: 2;
+  transition: background-color 0.5s ease;
+}
+
+body.scrolled .hero-overlay {
+  background-color: rgba(0, 0, 0, 0.6); /* სქროლვისას ფენა მუქდება */
+}
+
+/* --- Hero სექციის კონტენტი (სათაური, ტექსტი, საძიებო ველი) --- */
+.hero-content {
+  position: relative;
+  z-index: 3; /* კონტენტი ყველაზე წინ უნდა იყოს */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+body.scrolled .hero-content {
+  opacity: 0; /* სქროლვისას კონტენტი ქრება */
+  transform: translateY(-20px);
+}
+
+.hero h1 {
+  font-size: 4rem; /* 64px */
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* ჩრდილი უკეთესი კითხვადობისთვის */
+}
+
+.hero p {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 400;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* --- საძიებო ველის სტილები --- */
 .search-bar {
   display: flex;
   position: relative;
@@ -30,43 +86,78 @@
   padding: 10px;
   border-radius: 50px;
   max-width: 600px;
+  width: 100%;
   margin: 0 auto;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
 .search-bar input {
-  flex-grow: 1; border: none; outline: none;
-  font-size: 16px; padding-left: 15px; background-color: transparent;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: transparent;
+  color: #333;
+  padding: 0 0 0 15px;
 }
+
+.search-bar input::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
 .search-icon-desktop {
-  color: #888; font-size: 20px; margin: auto 10px;
+  color: #888;
+  font-size: 20px;
+  margin: auto 10px;
 }
+
 .search-bar button {
-  background-color: #f0f0f0; color: #555; border: none;
-  padding: 12px 30px; border-radius: 50px; font-size: 16px;
-  font-weight: 500; cursor: pointer; transition: background-color 0.3s ease;
+  background-color: #f0f0f0;
+  color: #555;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.search-bar button:hover { background-color: #e2e2e2; }
 
-/* ტექსტის და ხატულის დამალვა/გამოჩენა */
-.search-button-text { display: inline; }
-.search-button-icon { display: none; }
+.search-bar button:hover {
+  background-color: #e2e2e2;
+}
 
+.search-button-text {
+  display: inline;
+}
 
-/* --- მობილურის ვერსია --- */
+.search-button-icon {
+  display: none;
+}
+
+/* --- ადაპტაცია პატარა ეკრანებისთვის --- */
 @media (max-width: 768px) {
-  .hero { height: 70vh; }
-  .hero h1 { font-size: 2.5rem; }
-  .hero p { font-size: 1.2rem; }
+  .hero h1 {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .hero p {
+    font-size: 1.2rem; /* 19px */
+  }
 
   .search-bar {
     padding: 0;
   }
-  .search-icon-desktop {
-    display: none;
-  }
+
   .search-bar input {
+    color: #333;
     padding: 15px 60px 15px 25px;
     width: 100%;
+  }
+
+  .search-icon-desktop {
+    display: none;
   }
 
   .search-bar button {
@@ -74,26 +165,22 @@
     right: 6px;
     top: 50%;
     transform: translateY(-50%);
-    
-    /* --- მთავარი ცვლილება --- */
-    background: #f0f0f0; /* ღია ნაცრისფერი ფონი */
-    color: #555;        /* მუქი ნაცრისფერი ხატულა */
-    /* -------------------------- */
-    
+    background: #f0f0f0;
+    color: #555;
     width: 44px;
     height: 44px;
     padding: 0;
+    border-radius: 50px;
   }
-  
-  /* --- მთავარი ცვლილება --- */
+
   .search-bar button:hover {
-    background: #e2e2e2; /* ოდნავ მუქი ნაცრისფერი hover-ზე */
+    background: #e2e2e2;
   }
-  /* -------------------------- */
 
   .search-button-text {
     display: none;
   }
+
   .search-button-icon {
     display: block;
     font-size: 18px;

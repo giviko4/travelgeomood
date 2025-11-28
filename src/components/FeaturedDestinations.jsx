@@ -1,12 +1,10 @@
-// src/components/FeaturedDestinations.jsx
-
 import React from 'react';
 import DestinationCard from './DestinationCard';
-import './FeaturedDestinations.css'; // ამ ფაილის სტილებსაც სრულად შევცვლით
+import './FeaturedDestinations.css';
 import { destinations } from '../data/destinationsData';
 import { useTranslation } from 'react-i18next';
 
-// ვიღებთ პირველ 8 გამორჩეულ ტურს
+// ვიღებთ პირველ 8 ტურს (სპეციალური ტურები უკვე თავშია)
 const featuredTours = destinations.slice(0, 8);
 
 function FeaturedDestinations() {
@@ -28,7 +26,8 @@ function FeaturedDestinations() {
               name={dest.name[i18n.language] || dest.name.en} 
               price={dest.price}
               route={dest.route ? (dest.route[i18n.language] || dest.route.en) : ''}
-              routeLabel={dest.routeLabel ? (dest.routeLabel[i18n.language] || dest.routeLabel.en) : ''}
+              // --- მთავარი ცვლილება ---
+              isSpecial={dest.isSpecial} // <-- ეს ხაზი იყო გამოტოვებული
             />
           ))}
         </div>

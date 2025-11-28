@@ -1,4 +1,4 @@
-/* src/pages/ContactPage.css (გაერთიანებული ვერსია) */
+/* src/pages/ContactPage.css (განახლებული მობილურის ვერსიისთვის) */
 
 .contact-page {
   padding: 80px 20px; /* დაშორება ზემოდან და ქვემოდან */
@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center; /* ვაცენტრებთ ბარათს ჰორიზონტალურად */
+  transition: padding 0.3s ease; /* დავამატოთ რბილი გადასვლა */
 }
 
 /* --- ერთიანი ბარათი --- */
@@ -17,6 +18,7 @@
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: all 0.3s ease; /* დავამატოთ რბილი გადასვლა */
 }
 
 .contact-header {
@@ -36,7 +38,7 @@
 .contact-info-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 25px; /* ოდნავ შევამცირეთ დაშორება */
+  gap: 25px;
 }
 
 .contact-item {
@@ -92,7 +94,7 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
-  flex-wrap: wrap; /* მობილურზე გადასატანად */
+  flex-wrap: wrap;
 }
 .social-icon {
   display: inline-flex;
@@ -116,3 +118,32 @@
 .social-icon.telegram { background-color: #0088cc; }
 .social-icon.facebook { background-color: #1877F2; }
 .social-icon.instagram { background: #d6249f; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+
+
+/* --- მთავარი ცვლილება: ადაპტაცია მობილურისთვის --- */
+@media (max-width: 768px) {
+
+  /* 1. ვაუქმებთ გვერდის ვერტიკალურ ცენტრირებას და ვამცირებთ დაშორებებს */
+  .contact-page {
+    display: block; /* ვაუქმებთ flex ცენტრირებას */
+    padding: 40px 20px; /* ვამცირებთ დაშორებას ზემოდან და ქვემოდან */
+  }
+
+  /* 2. ვაუქმებთ "ბარათის" ვიზუალს */
+  .contact-card {
+    background-color: transparent; /* ფონს ვხდით გამჭვირვალეს */
+    box-shadow: none; /* ვაშორებთ ჩრდილს */
+    padding: 0; /* ვაშორებთ შიდა დაშორებებს */
+    border-radius: 0;
+  }
+  
+  /* 3. ვამცირებთ დაშორებებს კომპაქტური ვიზუალისთვის */
+  .contact-header p {
+    margin-bottom: 30px;
+  }
+  
+  .contact-socials-section {
+    margin-top: 30px;
+    padding-top: 25px;
+  }
+}

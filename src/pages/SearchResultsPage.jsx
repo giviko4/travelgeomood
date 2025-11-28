@@ -1,41 +1,70 @@
+// src/pages/SearchResultsPage.jsx (შესწორებული იმპორტით)
+
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { destinations } from '../data/destinationsData';
-import TourCard from '../components/TourCard'; // ვიყენებთ TourCard-ს, რომელსაც ახლავე შევქმნით
-import './DestinationsPage.css'; // ვიყენებთ იგივე სტილებს
+import { useTranslation } from 'react-i18next';
+import { allTours } from '../data/allToursData.js'; // 1. ვიყენებთ ტურების ერთიან სიას (დამატებულია .js)
+import DestinationCard from '../components/DestinationCard';
+import './DestinationsPage.css';
 
 function SearchResultsPage() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchParams] = useSearchParams();
+  const { i18n } = useTranslation();
   const query = searchParams.get('q');
 
   useEffect(() => {
     if (query) {
-      const lowercasedQuery = query.toLowerCase();
-      const filtered = destinations.filter(dest =>
-        dest.name.toLowerCase().includes(lowercasedQuery) ||
-        dest.route?.toLowerCase().includes(lowercasedQuery) ||
-        dest.description?.toLowerCase().includes(lowercasedQuery)
-      );
+      const lowercasedQuery = query.toLowerCase().trim();
+      
+      const filtered = allTours.filter(tour => {
+        const nameEN = tour.name.en?.toLowerCase() || '';
+        const nameRU = tour.name.ru?.toLowerCase() || '';
+        const routeEN = tour.route?.en?.toLowerCase() || '';
+        const routeRU = tour.route?.ru?.toLowerCase() || '';
+        const descriptionEN = tour.description.en?.toLowerCase() || '';
+        const descriptionRU = tour.description.ru?.toLowerCase() || '';
+
+        return (
+          nameEN.includes(lowercasedQuery) ||
+          nameRU.includes(lowercasedQuery) ||
+          routeEN.includes(lowercasedQuery) ||
+          routeRU.includes(lowercasedQuery) ||
+          descriptionEN.includes(lowercasedQuery) ||
+          descriptionRU.includes(lowercasedQuery)
+        );
+      });
       setSearchResults(filtered);
+    } else {
+      setSearchResults([]);
     }
   }, [query]);
 
   return (
     <div className="destinations-page">
       <div className="container" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
-        <h1 className="search-results-title">Search Results for: "{query}"</h1>
+        <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>
+          Search Results for: "{query}"
+        </h1>
         
         {searchResults.length > 0 ? (
           <div className="tours-grid">
             {searchResults.map(tour => (
-              <TourCard key={tour.id} tour={tour} />
+              <DestinationCard 
+                key={tour.id}
+                id={tour.id}
+                image={tour.images[0].src}
+                name={tour.name[i18n.language] || tour.name.en}
+                price={tour.price}
+                route={tour.route ? (tour.route[i18n.language] || tour.route.en) : ''}
+                isSpecial={tour.isSpecial}
+              />
             ))}
           </div>
         ) : (
-          <div className="no-results">
-            <p>No tours found matching your search.</p>
-            <Link to="/destinations" className="cta-btn primary">View All Tours</Link>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', marginBottom: '20px' }}>No tours found matching your search.</p>
+            <Link to="/destinations" className="get-started-btn">View All Tours</Link>
           </div>
         )}
       </div>

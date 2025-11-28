@@ -1,19 +1,20 @@
-/* src/pages/DestinationsPage.css (გასუფთავებული და განახლებული) */
+/* src/pages/DestinationsPage.css (სურათი წაშლილია) */
 
 .destinations-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../assets/images/khevsureti.jpg') no-repeat center center/cover;
-  color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 60px 20px 40px 20px; /* დაშორება ზემოდან და ქვემოდან */
+  background-color: transparent; /* ფონი გავხადოთ გამჭვირვალე */
 }
 
 .destinations-hero h1 {
+  color: #333; /* ტექსტის ფერი გავხადოთ მუქი */
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 15px;
 }
 
 .destinations-hero p {
+  color: #555; /* ტექსტის ფერი გავხადოთ მუქი */
   font-size: 20px;
   max-width: 700px;
   margin: 0 auto;
@@ -21,22 +22,20 @@
 
 .tours-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 სვეტი დესკტოპზე */
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  padding: 60px 0;
+  padding: 20px 0 60px 0; /* შევამციროთ დაშორება ზემოდან */
 }
 
 /* --- ადაპტაცია --- */
 @media (max-width: 992px) {
   .tours-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 სვეტი პლანშეტზე */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .tours-grid {
-    grid-template-columns: 1fr; /* 1 სვეტი მობილურზე */
+    grid-template-columns: 1fr;
   }
 }
-
-/* ძველი სტილები .tour-card-link, .tour-card და ა.შ. აქედან წაშლილია, რადგან აღარ გვჭირდება */

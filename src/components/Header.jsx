@@ -1,3 +1,5 @@
+// src/components/Header.jsx (სრული ვერსია)
+
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -17,14 +19,18 @@ function Header() {
   const [userName, setUserName] = useState('');
   const [isNavOpen, setIsNavOpen] = useState(false);
   
-  // ... (useEffect და მოდალების ფუნქციები უცვლელია) ...
   useEffect(() => {
     if (currentUser) {
       const userDocRef = doc(db, "users", currentUser.uid);
       getDoc(userDocRef).then(docSnap => {
-        if (docSnap.exists()) { setUserName(docSnap.data().displayName); }
+        if (docSnap.exists()) { 
+          // იღებს სახელს Firestore-დან (თქვენს SignUpModal-ში firstName ინახება)
+          setUserName(docSnap.data().firstName || docSnap.data().displayName); 
+        }
       });
-    } else { setUserName(''); }
+    } else { 
+      setUserName(''); 
+    }
   }, [currentUser]);
 
   const [signInModalIsOpen, setSignInModalIsOpen] = useState(false);
@@ -37,29 +43,36 @@ function Header() {
   const switchToSignIn = () => { closeSignUpModal(); openSignInModal(); };
   const handleSignOut = () => { signOut(auth).catch((error) => console.error('Sign out error', error)); };
 
+  // მობილურის მენიუს დახურვა ლინკზე დაკლიკებისას
+  const closeMobileMenu = () => {
+    setIsNavOpen(false);
+  };
+
   return (
     <>
       <header className="header">
         <div className="container header-container">
-          <Link to="/" className="logo" onClick={() => setIsNavOpen(false)}>
+          <Link to="/" className="logo" onClick={closeMobileMenu}>
             travelgeomood
           </Link>
           
           <nav className={isNavOpen ? "header-nav active" : "header-nav"}>
-            <ul onClick={() => setIsNavOpen(false)}>
+            <ul onClick={closeMobileMenu}>
               <li><NavLink to="/" className="nav-link">{t('nav_home')}</NavLink></li>
               <li><NavLink to="/about" className="nav-link">{t('nav_about')}</NavLink></li>
               <li><NavLink to="/destinations" className="nav-link">{t('nav_destinations')}</NavLink></li>
+              <li><NavLink to="/special-tours" className="nav-link">{t('nav_special_tours')}</NavLink></li>
+              {/* --- დამატებულია ახალი ბმული --- */}
+              <li><NavLink to="/gallery" className="nav-link">{t('nav_gallery')}</NavLink></li>
               <li><NavLink to="/contact" className="nav-link">{t('nav_contact')}</NavLink></li>
             </ul>
           </nav>
           
-          {/* --- მთავარი ცვლილება: .mobile-menu-icon-wrapper --- */}
           <div className="header-right-side">
             <LanguageSwitcher />
             {currentUser ? (
               <div className="user-profile">
-                <Link to="/profile" className="profile-link">
+                <Link to="/profile" className="profile-link" onClick={closeMobileMenu}>
                   <div className="profile-avatar-icon">
                     {userName ? userName.charAt(0).toUpperCase() : (currentUser.email ? currentUser.email.charAt(0).toUpperCase() : 'U')}
                   </div>
@@ -74,7 +87,6 @@ function Header() {
           <div className="mobile-menu-icon" onClick={() => setIsNavOpen(!isNavOpen)}>
             {isNavOpen ? <FaTimes /> : <FaBars />}
           </div>
-          {/* -------------------------------------------------- */}
         </div>
       </header>
       {!currentUser && (

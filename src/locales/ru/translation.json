@@ -3,6 +3,13 @@
   "nav_about": "О нас",
   "nav_destinations": "Направления",
   "nav_contact": "Контакты",
+    "nav_gallery": "Фотогалерея",
+    "contact_subtitle": "Есть вопросы? Свяжитесь с нами!",
+    "telegram_message_us": "Напишите нам",
+
+
+    "special_tour_badge": "Особый тур",
+
   "hero_title": "Исследуйте Грузию",
   "hero_subtitle": "Найдите свое следующее приключение",
   "search_placeholder": "Поиск направлений...",
@@ -64,5 +71,8 @@
   "description_label": "Описание",
   "book_now_btn": "Забронировать",
   "login_to_book_prompt": "Пожалуйста, войдите в систему, чтобы забронировать этот тур.",
-  "back_to_destinations_link": "← Назад ко всем направлениям"
+  "back_to_destinations_link": "← Назад ко всем направлениям",
+  "nav_special_tours": "Особые туры",
+  "special_tours_hero_title": "Эксклюзивные приключения",
+  "special_tours_hero_subtitle": "Уникальные впечатления, созданные специально для вас."
 }

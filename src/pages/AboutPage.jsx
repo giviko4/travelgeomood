@@ -1,16 +1,17 @@
-// src/pages/AboutPage.jsx (განახლებული სტრუქტურით)
+// src/pages/AboutPage.jsx (ტექსტი დაბრუნებულია)
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaHeart, FaUserFriends, FaMapSigns } from 'react-icons/fa';
-import './AboutPage.css'; // ამ ფაილის სტილებს სრულად შევცვლით
+import './AboutPage.css';
 
 function AboutPage() {
   const { t } = useTranslation();
 
   return (
     <div className="about-page">
+      {/* --- დავაბრუნეთ Hero სექცია ტექსტებით --- */}
       <div className="about-hero">
         <div className="container">
           <h1>{t('about_hero_title')}</h1>
@@ -18,9 +19,9 @@ function AboutPage() {
         </div>
       </div>
 
-      {/* --- ახალი, ორსვეტიანი "ჩვენი ისტორია" სექცია --- */}
       <section className="story-section">
         <div className="container story-section-grid">
+          {/* ... დანარჩენი კოდი უცვლელია ... */}
           <div className="story-intro">
             <h2>{t('about_meet_team')}</h2>
             <p>{t('about_hero_subtitle')}</p>
@@ -31,7 +32,7 @@ function AboutPage() {
         </div>
       </section>
       
-      {/* --- "რატომ ჩვენ?" სექცია (სტრუქტურა იგივე, სტილი შეიცვლება) --- */}
+      {/* ... დანარჩენი გვერდი უცვლელია ... */}
       <section className="why-us-section">
         <div className="container">
           <div className="section-header">
@@ -57,7 +58,6 @@ function AboutPage() {
         </div>
       </section>
       
-      {/* --- "გამოხმაურებები" სექცია (სტრუქტურა იგივე, სტილი შეიცვლება) --- */}
       <section className="reviews-section">
         <div className="container">
           <div className="section-header">
@@ -80,7 +80,6 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* --- მოწოდება მოქმედებისკენ (CTA) --- */}
       <section className="cta-section">
         <div className="container">
           <h2>{t('about_cta_title')}</h2>
@@ -93,7 +92,10 @@ function AboutPage() {
       </section>
     </div>
   );
+
+
+
+  
 }
 
 export default AboutPage;
-

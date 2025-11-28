@@ -11,6 +11,7 @@
 }
 .gallery-slide-wrapper {
   position: relative;
+  cursor: pointer;
 }
 .image-caption {
   position: absolute;
@@ -69,11 +70,16 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+/* --- მთავარი ცვლილება --- */
 .detail-section p {
   font-size: 16px;
-  line-height: 1.6;
-  color: #212529;
+  line-height: 1.8; /* გავზარდოთ დაშორება უკეთესი კითხვადობისთვის */
+  color: #333;
+  white-space: pre-line; /* <-- ეს ხაზი უზრუნველყოფს აბზაცების და ფორმატირების შენარჩუნებას */
 }
+/* -------------------------- */
+
 .price-section {
   background-color: #f0f7ff;
   padding: 20px;
@@ -124,10 +130,6 @@
   font-size: 20px;
   color: white;
 }
-
-
-
-/* ეს კოდი დაამატე DestinationDetail.css-ის ბოლოში */
 .booking-section {
   text-align: center;
   margin-top: 40px;
@@ -157,9 +159,4 @@
   font-weight: 600;
   cursor: pointer;
   text-decoration: underline;
-}
-
-/* ეს კოდი დაამატე DestinationDetail.css-ის ბოლოში */
-.gallery-slide-wrapper {
-  cursor: pointer; /* ამატებს ხელის კურსორს */
 }

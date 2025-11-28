@@ -1,12 +1,10 @@
-// src/pages/ContactPage.jsx (გაერთიანებული ვერსია)
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaYoutube, FaVk, 
   FaWhatsapp, FaTelegramPlane, FaFacebookF, FaInstagram 
 } from 'react-icons/fa';
-import './ContactPage.css'; // ამ ფაილის სტილებსაც შევცვლით
+import './ContactPage.css';
 
 function ContactPage() {
   const { t } = useTranslation();
@@ -14,14 +12,13 @@ function ContactPage() {
   return (
     <section className="contact-page">
       <div className="container">
-        {/* ერთიანი, ცენტრში მოთავსებული ბარათი */}
         <div className="contact-card">
           
-          {/* --- ნაწილი 1: ძირითადი ინფორმაცია --- */}
           <div className="contact-main-content">
             <div className="contact-header">
               <h2>{t('contact_title')}</h2>
-              <p>Got a question, comment, or suggestion? We'd love to hear from you!</p>
+              {/* --- შეცვლილია ეს ხაზი --- */}
+              <p>{t('contact_subtitle')}</p>
             </div>
             
             <div className="contact-info-wrapper">
@@ -51,10 +48,16 @@ function ContactPage() {
                   <a href="tel:+995599656068">+995 599 656 068</a>
                 </div>
               </div>
+              <div className="contact-item">
+                <FaPhoneAlt className="contact-icon" />
+                <div className="contact-text">
+                  <span>Vasili:</span>
+                  <a href="tel:+995577311269">+995 577 31 12 69</a>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* --- ნაწილი 2: სოციალური ქსელები --- */}
           <div className="contact-socials-section">
             <h3>{t('contact_follow_us')}</h3>
             <div className="social-links">
@@ -73,4 +76,4 @@ function ContactPage() {
   );
 }
 
-export default ContactPage;
+export default ContactPage

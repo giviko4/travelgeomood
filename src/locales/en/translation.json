@@ -3,6 +3,12 @@
   "nav_about": "About",
   "nav_destinations": "Destinations",
   "nav_contact": "Contact",
+    "nav_gallery": "Gallery",
+"contact_subtitle": "Got a question? Contact us!",
+"telegram_message_us": "Message us",
+
+
+  "special_tour_badge": "Special Tour",
   "hero_title": "Explore Georgia",
   "hero_subtitle": "Find your next adventure",
   "search_placeholder": "Search for destinations...",
@@ -64,6 +70,9 @@
   "description_label": "Description",
   "book_now_btn": "Book Now",
   "login_to_book_prompt": "Please Sign In to book this tour.",
-  "back_to_destinations_link": "← Back to All Destinations"
+  "back_to_destinations_link": "← Back to All Destinations",
+  "nav_special_tours": "Special Tours",
+  "special_tours_hero_title": "Exclusive Adventures",
+  "special_tours_hero_subtitle": "Unique experiences crafted just for you."
 
 }

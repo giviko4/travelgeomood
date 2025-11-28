@@ -3,37 +3,53 @@ import { useParams, Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
+
 import { destinations } from '../data/destinationsData';
+import { specialTours } from '../data/specialToursData';
+
 import BookingModal from '../components/BookingModal';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import './DestinationDetail.css';
+
+const allTours = [...destinations, ...specialTours];
 
 function DestinationDetail() {
   const { id } = useParams();
   const { i18n, t } = useTranslation();
   const { currentUser } = useAuth();
   const currentLang = i18n.language;
+
+  const destination = allTours.find(dest => dest.id === id);
   
-  const destination = destinations.find(dest => dest.id === id);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleAuthRedirect = () => {
-    alert("Please sign in using the button in the header to book a tour.");
+  if (!destination) {
+    return (
+      <div className="container" style={{ padding: '40px 0', textAlign: 'center' }}>
+        <h2>Destination not found!</h2>
+        <Link to="/destinations" className="back-link" style={{ textAlign: 'center' }}>← Back to All Destinations</Link>
+      </div>
+    );
+  }
+
+  const gallerySliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
   };
-
-  if (!destination) { return <div className="container not-found"><h2>Destination not found!</h2></div>; }
-
-  const gallerySliderSettings = { /* ... */ };
   const slides = destination.images.map(img => ({ src: img.src }));
 
   return (
     <>
       <div className="detail-container">
-        <div className="detail-gallery-slider">
-          {destination.images && destination.images.length > 0 && (
+        {destination.images && destination.images.length > 0 && (
+          <div className="detail-gallery-slider">
             <Slider {...gallerySliderSettings}>
               {destination.images.map((image, index) => (
                 <div key={index} className="gallery-slide-wrapper" onClick={() => { setImageIndex(index); setLightboxOpen(true); }}>
@@ -42,8 +58,8 @@ function DestinationDetail() {
                 </div>
               ))}
             </Slider>
-          )}
-        </div>
+          </div>
+        )}
         <div className="detail-content">
           <h1>{destination.name[currentLang] || destination.name.en}</h1>
           <div className="detail-section prominent">
@@ -91,9 +107,3 @@ function DestinationDetail() {
   );
 }
 export default DestinationDetail;
-
-
-
-
-
-
